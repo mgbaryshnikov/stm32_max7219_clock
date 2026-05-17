@@ -69,3 +69,14 @@ void change_column(uint8_t (*arr)[8], uint8_t max_number, uint8_t column, uint8_
     change_dot(arr, max_number, i + 1, column, ((data >> i) & 1));
   }
 }
+
+void draw_disp(uint8_t (*arr)[8], uint8_t max_number, uint8_t *data) {
+  for (int i = 0; i < 8; i++) {
+    if (max_number < 3) {
+      change_row(arr, max_number, i + 1, data[i] << 2);
+    }
+    else {
+      change_row(arr, max_number, i + 1, data[i]);
+    }
+  }
+}

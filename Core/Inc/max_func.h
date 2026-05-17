@@ -20,4 +20,6 @@ void change_dot(uint8_t (*arr)[8], uint8_t max_number, uint8_t column, uint8_t r
 
 void change_column(uint8_t (*arr)[8], uint8_t max_number, uint8_t column, uint8_t data);
 
+void draw_disp(uint8_t (*arr)[8], uint8_t max_number, uint8_t *data);
+
 #endif

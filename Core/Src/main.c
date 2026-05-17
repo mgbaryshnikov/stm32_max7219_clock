@@ -97,14 +97,11 @@ int main(void)
   uint8_t arr[8][8];
   create_array(arr);
 
-  for(uint8_t row = 0; row < 8; row++)
-  {
-    change_row(arr, 2, row + 1, eye[row]);
-    change_row(arr, 3, row + 1, eye[row]);
-    HAL_Delay(150);
-    refresh_max(arr);
-  }
+  draw_disp(arr, 4, one);
+  draw_disp(arr, 3, seven);
+  draw_disp(arr, 2, five);
 
+  draw_disp(arr, 1, four);
 
   refresh_max(arr);
   /* USER CODE END 2 */
@@ -114,26 +111,19 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-    change_row(arr, 2, 4, 0b10001101);
-    change_row(arr, 3, 4, 0b10001101);
-
-    refresh_max(arr);
-    HAL_Delay(2000);
-    change_row(arr, 3, 4, 0b10011001);   
-    change_row(arr, 2, 4, 0b10011001);
-    refresh_max(arr);
-    HAL_Delay(2000);
-
-    change_row(arr, 2, 4, 0b10110001);
-    change_row(arr, 3, 4, 0b10110001);
-
-    refresh_max(arr);
-    HAL_Delay(2000);
-    change_row(arr, 3, 4, 0b10011001);   
-    change_row(arr, 2, 4, 0b10011001);
-    refresh_max(arr);
-    HAL_Delay(2000);
+    
     /* USER CODE BEGIN 3 */
+    change_dot(arr, 3, 2, 8, 1);
+    change_dot(arr, 3, 7, 8, 1);
+    refresh_max(arr);
+
+    HAL_Delay(5000);
+
+    change_dot(arr, 3, 2, 8, 0);
+    change_dot(arr, 3, 7, 8, 0);
+    refresh_max(arr);
+
+    HAL_Delay(2000);
   }
   /* USER CODE END 3 */
 }
