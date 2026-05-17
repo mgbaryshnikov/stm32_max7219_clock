@@ -1,0 +1,674 @@
+ARM GAS  /var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"max_func.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "Core/Src/max_func.c"
+  18              		.section	.text.send_all_data,"ax",%progbits
+  19              		.align	1
+  20              		.global	send_all_data
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	send_all_data:
+  26              	.LVL0:
+  27              	.LFB65:
+   1:Core/Src/max_func.c **** #include "../Inc/max_func.h"
+   2:Core/Src/max_func.c **** #include "../Inc/aux_func.h"
+   3:Core/Src/max_func.c **** #include "main.h"
+   4:Core/Src/max_func.c **** #include "stm32f103xb.h"
+   5:Core/Src/max_func.c **** 
+   6:Core/Src/max_func.c **** 
+   7:Core/Src/max_func.c **** SPI_HandleTypeDef hspi1;
+   8:Core/Src/max_func.c **** 
+   9:Core/Src/max_func.c **** void send_all_data(uint8_t reg, uint8_t data) 
+  10:Core/Src/max_func.c **** {
+  28              		.loc 1 10 1 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 8
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		.loc 1 10 1 is_stmt 0 view .LVU1
+  33 0000 10B5     		push	{r4, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 4, -8
+  37              		.cfi_offset 14, -4
+  38 0002 82B0     		sub	sp, sp, #8
+  39              	.LCFI1:
+  40              		.cfi_def_cfa_offset 16
+  11:Core/Src/max_func.c ****     uint8_t tx[8];
+  41              		.loc 1 11 5 is_stmt 1 view .LVU2
+  12:Core/Src/max_func.c **** 
+  13:Core/Src/max_func.c ****     for(int i = 0; i < 4; i++)
+  42              		.loc 1 13 5 view .LVU3
+  43              	.LBB2:
+  44              		.loc 1 13 9 view .LVU4
+  45              	.LVL1:
+ARM GAS  /var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s 			page 2
+
+
+  46              		.loc 1 13 13 is_stmt 0 view .LVU5
+  47 0004 0022     		movs	r2, #0
+  48              		.loc 1 13 5 view .LVU6
+  49 0006 0AE0     		b	.L2
+  50              	.LVL2:
+  51              	.L3:
+  14:Core/Src/max_func.c ****     {
+  15:Core/Src/max_func.c ****         tx[i * 2]     = reg;
+  52              		.loc 1 15 9 is_stmt 1 view .LVU7
+  53              		.loc 1 15 14 is_stmt 0 view .LVU8
+  54 0008 5300     		lsls	r3, r2, #1
+  55              		.loc 1 15 23 view .LVU9
+  56 000a 02AC     		add	r4, sp, #8
+  57 000c 04EB420C 		add	ip, r4, r2, lsl #1
+  58 0010 0CF8080C 		strb	r0, [ip, #-8]
+  16:Core/Src/max_func.c ****         tx[i * 2 + 1] = data;
+  59              		.loc 1 16 9 is_stmt 1 view .LVU10
+  60              		.loc 1 16 23 is_stmt 0 view .LVU11
+  61 0014 0933     		adds	r3, r3, #9
+  62 0016 6B44     		add	r3, sp, r3
+  63 0018 03F8081C 		strb	r1, [r3, #-8]
+  13:Core/Src/max_func.c ****     {
+  64              		.loc 1 13 28 is_stmt 1 discriminator 3 view .LVU12
+  65 001c 0132     		adds	r2, r2, #1
+  66              	.LVL3:
+  67              	.L2:
+  13:Core/Src/max_func.c ****     {
+  68              		.loc 1 13 22 discriminator 1 view .LVU13
+  69 001e 032A     		cmp	r2, #3
+  70 0020 F2DD     		ble	.L3
+  71              	.LBE2:
+  17:Core/Src/max_func.c ****     }
+  18:Core/Src/max_func.c **** 
+  19:Core/Src/max_func.c ****     HAL_GPIO_WritePin(CS_GPIO_Port, CS_Pin, GPIO_PIN_RESET);
+  72              		.loc 1 19 5 view .LVU14
+  73 0022 0A4C     		ldr	r4, .L5
+  74 0024 0022     		movs	r2, #0
+  75              	.LVL4:
+  76              		.loc 1 19 5 is_stmt 0 view .LVU15
+  77 0026 0421     		movs	r1, #4
+  78              	.LVL5:
+  79              		.loc 1 19 5 view .LVU16
+  80 0028 2046     		mov	r0, r4
+  81              	.LVL6:
+  82              		.loc 1 19 5 view .LVU17
+  83 002a FFF7FEFF 		bl	HAL_GPIO_WritePin
+  84              	.LVL7:
+  20:Core/Src/max_func.c **** 
+  21:Core/Src/max_func.c ****     HAL_SPI_Transmit(&hspi1, tx, 8, HAL_MAX_DELAY);
+  85              		.loc 1 21 5 is_stmt 1 view .LVU18
+  86 002e 4FF0FF33 		mov	r3, #-1
+  87 0032 0822     		movs	r2, #8
+  88 0034 6946     		mov	r1, sp
+  89 0036 0648     		ldr	r0, .L5+4
+  90 0038 FFF7FEFF 		bl	HAL_SPI_Transmit
+  91              	.LVL8:
+  22:Core/Src/max_func.c **** 
+ARM GAS  /var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s 			page 3
+
+
+  23:Core/Src/max_func.c ****     HAL_GPIO_WritePin(CS_GPIO_Port, CS_Pin, GPIO_PIN_SET);
+  92              		.loc 1 23 5 view .LVU19
+  93 003c 0122     		movs	r2, #1
+  94 003e 0421     		movs	r1, #4
+  95 0040 2046     		mov	r0, r4
+  96 0042 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  97              	.LVL9:
+  24:Core/Src/max_func.c **** }
+  98              		.loc 1 24 1 is_stmt 0 view .LVU20
+  99 0046 02B0     		add	sp, sp, #8
+ 100              	.LCFI2:
+ 101              		.cfi_def_cfa_offset 8
+ 102              		@ sp needed
+ 103 0048 10BD     		pop	{r4, pc}
+ 104              	.L6:
+ 105 004a 00BF     		.align	2
+ 106              	.L5:
+ 107 004c 00080140 		.word	1073809408
+ 108 0050 00000000 		.word	hspi1
+ 109              		.cfi_endproc
+ 110              	.LFE65:
+ 112              		.section	.text.max_init,"ax",%progbits
+ 113              		.align	1
+ 114              		.global	max_init
+ 115              		.syntax unified
+ 116              		.thumb
+ 117              		.thumb_func
+ 119              	max_init:
+ 120              	.LFB66:
+  25:Core/Src/max_func.c **** 
+  26:Core/Src/max_func.c **** void max_init() {
+ 121              		.loc 1 26 17 is_stmt 1 view -0
+ 122              		.cfi_startproc
+ 123              		@ args = 0, pretend = 0, frame = 0
+ 124              		@ frame_needed = 0, uses_anonymous_args = 0
+ 125 0000 08B5     		push	{r3, lr}
+ 126              	.LCFI3:
+ 127              		.cfi_def_cfa_offset 8
+ 128              		.cfi_offset 3, -8
+ 129              		.cfi_offset 14, -4
+  27:Core/Src/max_func.c ****   send_all_data(0x0C, 0x01);
+ 130              		.loc 1 27 3 view .LVU22
+ 131 0002 0121     		movs	r1, #1
+ 132 0004 0C20     		movs	r0, #12
+ 133 0006 FFF7FEFF 		bl	send_all_data
+ 134              	.LVL10:
+  28:Core/Src/max_func.c ****   send_all_data(0x09, 0x00);
+ 135              		.loc 1 28 3 view .LVU23
+ 136 000a 0021     		movs	r1, #0
+ 137 000c 0920     		movs	r0, #9
+ 138 000e FFF7FEFF 		bl	send_all_data
+ 139              	.LVL11:
+  29:Core/Src/max_func.c ****   send_all_data(0x0A, 0x04);
+ 140              		.loc 1 29 3 view .LVU24
+ 141 0012 0421     		movs	r1, #4
+ 142 0014 0A20     		movs	r0, #10
+ 143 0016 FFF7FEFF 		bl	send_all_data
+ARM GAS  /var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s 			page 4
+
+
+ 144              	.LVL12:
+  30:Core/Src/max_func.c ****   send_all_data(0x0B, 0x07);
+ 145              		.loc 1 30 3 view .LVU25
+ 146 001a 0721     		movs	r1, #7
+ 147 001c 0B20     		movs	r0, #11
+ 148 001e FFF7FEFF 		bl	send_all_data
+ 149              	.LVL13:
+  31:Core/Src/max_func.c ****   send_all_data(0x0F, 0x00);
+ 150              		.loc 1 31 3 view .LVU26
+ 151 0022 0021     		movs	r1, #0
+ 152 0024 0F20     		movs	r0, #15
+ 153 0026 FFF7FEFF 		bl	send_all_data
+ 154              	.LVL14:
+  32:Core/Src/max_func.c **** }
+ 155              		.loc 1 32 1 is_stmt 0 view .LVU27
+ 156 002a 08BD     		pop	{r3, pc}
+ 157              		.cfi_endproc
+ 158              	.LFE66:
+ 160              		.section	.text.create_array,"ax",%progbits
+ 161              		.align	1
+ 162              		.global	create_array
+ 163              		.syntax unified
+ 164              		.thumb
+ 165              		.thumb_func
+ 167              	create_array:
+ 168              	.LVL15:
+ 169              	.LFB67:
+  33:Core/Src/max_func.c **** 
+  34:Core/Src/max_func.c **** 
+  35:Core/Src/max_func.c **** void create_array(uint8_t (*arr)[8]) {
+ 170              		.loc 1 35 38 is_stmt 1 view -0
+ 171              		.cfi_startproc
+ 172              		@ args = 0, pretend = 0, frame = 0
+ 173              		@ frame_needed = 0, uses_anonymous_args = 0
+ 174              		@ link register save eliminated.
+  36:Core/Src/max_func.c ****   for (uint8_t i = 0; i < 8; i++) {
+ 175              		.loc 1 36 3 view .LVU29
+ 176              	.LBB3:
+ 177              		.loc 1 36 8 view .LVU30
+ 178              		.loc 1 36 16 is_stmt 0 view .LVU31
+ 179 0000 0022     		movs	r2, #0
+ 180              		.loc 1 36 3 view .LVU32
+ 181 0002 15E0     		b	.L10
+ 182              	.LVL16:
+ 183              	.L11:
+ 184              	.LBB4:
+  37:Core/Src/max_func.c ****     for (uint8_t j = 0; j < 8; j++) {
+  38:Core/Src/max_func.c ****       if (j % 2 == 0) arr[i][j] = i + 1;
+  39:Core/Src/max_func.c ****       else arr[i][j] = 0b00000000;
+ 185              		.loc 1 39 12 is_stmt 1 view .LVU33
+ 186              		.loc 1 39 15 is_stmt 0 view .LVU34
+ 187 0004 00EBC201 		add	r1, r0, r2, lsl #3
+ 188              		.loc 1 39 22 view .LVU35
+ 189 0008 4FF0000C 		mov	ip, #0
+ 190 000c 01F803C0 		strb	ip, [r1, r3]
+ 191              	.L12:
+  37:Core/Src/max_func.c ****     for (uint8_t j = 0; j < 8; j++) {
+ARM GAS  /var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s 			page 5
+
+
+ 192              		.loc 1 37 33 is_stmt 1 discriminator 2 view .LVU36
+ 193 0010 0133     		adds	r3, r3, #1
+ 194              	.LVL17:
+  37:Core/Src/max_func.c ****     for (uint8_t j = 0; j < 8; j++) {
+ 195              		.loc 1 37 33 is_stmt 0 discriminator 2 view .LVU37
+ 196 0012 DBB2     		uxtb	r3, r3
+ 197              	.LVL18:
+ 198              	.L14:
+  37:Core/Src/max_func.c ****     for (uint8_t j = 0; j < 8; j++) {
+ 199              		.loc 1 37 27 is_stmt 1 discriminator 1 view .LVU38
+ 200 0014 072B     		cmp	r3, #7
+ 201 0016 09D8     		bhi	.L16
+  38:Core/Src/max_func.c ****       else arr[i][j] = 0b00000000;
+ 202              		.loc 1 38 7 view .LVU39
+  38:Core/Src/max_func.c ****       else arr[i][j] = 0b00000000;
+ 203              		.loc 1 38 10 is_stmt 0 view .LVU40
+ 204 0018 13F0010F 		tst	r3, #1
+ 205 001c F2D1     		bne	.L11
+  38:Core/Src/max_func.c ****       else arr[i][j] = 0b00000000;
+ 206              		.loc 1 38 23 is_stmt 1 discriminator 1 view .LVU41
+  38:Core/Src/max_func.c ****       else arr[i][j] = 0b00000000;
+ 207              		.loc 1 38 26 is_stmt 0 discriminator 1 view .LVU42
+ 208 001e 00EBC201 		add	r1, r0, r2, lsl #3
+  38:Core/Src/max_func.c ****       else arr[i][j] = 0b00000000;
+ 209              		.loc 1 38 37 discriminator 1 view .LVU43
+ 210 0022 02F1010C 		add	ip, r2, #1
+  38:Core/Src/max_func.c ****       else arr[i][j] = 0b00000000;
+ 211              		.loc 1 38 33 discriminator 1 view .LVU44
+ 212 0026 01F803C0 		strb	ip, [r1, r3]
+ 213 002a F1E7     		b	.L12
+ 214              	.L16:
+  38:Core/Src/max_func.c ****       else arr[i][j] = 0b00000000;
+ 215              		.loc 1 38 33 discriminator 1 view .LVU45
+ 216              	.LBE4:
+  36:Core/Src/max_func.c ****   for (uint8_t i = 0; i < 8; i++) {
+ 217              		.loc 1 36 31 is_stmt 1 discriminator 2 view .LVU46
+ 218 002c 0132     		adds	r2, r2, #1
+ 219              	.LVL19:
+  36:Core/Src/max_func.c ****   for (uint8_t i = 0; i < 8; i++) {
+ 220              		.loc 1 36 31 is_stmt 0 discriminator 2 view .LVU47
+ 221 002e D2B2     		uxtb	r2, r2
+ 222              	.LVL20:
+ 223              	.L10:
+  36:Core/Src/max_func.c ****   for (uint8_t i = 0; i < 8; i++) {
+ 224              		.loc 1 36 25 is_stmt 1 discriminator 1 view .LVU48
+ 225 0030 072A     		cmp	r2, #7
+ 226 0032 01D8     		bhi	.L17
+ 227              	.LBB5:
+  37:Core/Src/max_func.c ****     for (uint8_t j = 0; j < 8; j++) {
+ 228              		.loc 1 37 18 is_stmt 0 view .LVU49
+ 229 0034 0023     		movs	r3, #0
+ 230 0036 EDE7     		b	.L14
+ 231              	.L17:
+ 232              	.LBE5:
+ 233              	.LBE3:
+  40:Core/Src/max_func.c ****     }
+  41:Core/Src/max_func.c ****   }
+ARM GAS  /var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s 			page 6
+
+
+  42:Core/Src/max_func.c **** }
+ 234              		.loc 1 42 1 view .LVU50
+ 235 0038 7047     		bx	lr
+ 236              		.cfi_endproc
+ 237              	.LFE67:
+ 239              		.section	.text.refresh_max,"ax",%progbits
+ 240              		.align	1
+ 241              		.global	refresh_max
+ 242              		.syntax unified
+ 243              		.thumb
+ 244              		.thumb_func
+ 246              	refresh_max:
+ 247              	.LVL21:
+ 248              	.LFB68:
+  43:Core/Src/max_func.c **** 
+  44:Core/Src/max_func.c **** void refresh_max(uint8_t (*arr)[8]) {
+ 249              		.loc 1 44 37 is_stmt 1 view -0
+ 250              		.cfi_startproc
+ 251              		@ args = 0, pretend = 0, frame = 0
+ 252              		@ frame_needed = 0, uses_anonymous_args = 0
+ 253              		.loc 1 44 37 is_stmt 0 view .LVU52
+ 254 0000 70B5     		push	{r4, r5, r6, lr}
+ 255              	.LCFI4:
+ 256              		.cfi_def_cfa_offset 16
+ 257              		.cfi_offset 4, -16
+ 258              		.cfi_offset 5, -12
+ 259              		.cfi_offset 6, -8
+ 260              		.cfi_offset 14, -4
+ 261 0002 0646     		mov	r6, r0
+  45:Core/Src/max_func.c ****   for (uint8_t i = 0; i < 8; i++) {
+ 262              		.loc 1 45 3 is_stmt 1 view .LVU53
+ 263              	.LBB6:
+ 264              		.loc 1 45 8 view .LVU54
+ 265              	.LVL22:
+ 266              		.loc 1 45 16 is_stmt 0 view .LVU55
+ 267 0004 0024     		movs	r4, #0
+ 268              		.loc 1 45 3 view .LVU56
+ 269 0006 14E0     		b	.L19
+ 270              	.LVL23:
+ 271              	.L20:
+  46:Core/Src/max_func.c ****     HAL_GPIO_WritePin(CS_GPIO_Port, CS_Pin, GPIO_PIN_RESET);
+ 272              		.loc 1 46 5 is_stmt 1 view .LVU57
+ 273 0008 0B4D     		ldr	r5, .L22
+ 274 000a 0022     		movs	r2, #0
+ 275 000c 0421     		movs	r1, #4
+ 276 000e 2846     		mov	r0, r5
+ 277 0010 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 278              	.LVL24:
+  47:Core/Src/max_func.c **** 
+  48:Core/Src/max_func.c ****     HAL_SPI_Transmit(&hspi1, arr[i], 8, HAL_MAX_DELAY);
+ 279              		.loc 1 48 5 view .LVU58
+ 280 0014 4FF0FF33 		mov	r3, #-1
+ 281 0018 0822     		movs	r2, #8
+ 282 001a 06EBC401 		add	r1, r6, r4, lsl #3
+ 283 001e 0748     		ldr	r0, .L22+4
+ 284 0020 FFF7FEFF 		bl	HAL_SPI_Transmit
+ 285              	.LVL25:
+ARM GAS  /var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s 			page 7
+
+
+  49:Core/Src/max_func.c **** 
+  50:Core/Src/max_func.c ****     HAL_GPIO_WritePin(CS_GPIO_Port, CS_Pin, GPIO_PIN_SET);
+ 286              		.loc 1 50 5 view .LVU59
+ 287 0024 0122     		movs	r2, #1
+ 288 0026 0421     		movs	r1, #4
+ 289 0028 2846     		mov	r0, r5
+ 290 002a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 291              	.LVL26:
+  45:Core/Src/max_func.c ****     HAL_GPIO_WritePin(CS_GPIO_Port, CS_Pin, GPIO_PIN_RESET);
+ 292              		.loc 1 45 31 discriminator 3 view .LVU60
+ 293 002e 0134     		adds	r4, r4, #1
+ 294              	.LVL27:
+  45:Core/Src/max_func.c ****     HAL_GPIO_WritePin(CS_GPIO_Port, CS_Pin, GPIO_PIN_RESET);
+ 295              		.loc 1 45 31 is_stmt 0 discriminator 3 view .LVU61
+ 296 0030 E4B2     		uxtb	r4, r4
+ 297              	.LVL28:
+ 298              	.L19:
+  45:Core/Src/max_func.c ****     HAL_GPIO_WritePin(CS_GPIO_Port, CS_Pin, GPIO_PIN_RESET);
+ 299              		.loc 1 45 25 is_stmt 1 discriminator 1 view .LVU62
+ 300 0032 072C     		cmp	r4, #7
+ 301 0034 E8D9     		bls	.L20
+ 302              	.LBE6:
+  51:Core/Src/max_func.c ****   }
+  52:Core/Src/max_func.c **** }
+ 303              		.loc 1 52 1 is_stmt 0 view .LVU63
+ 304 0036 70BD     		pop	{r4, r5, r6, pc}
+ 305              	.LVL29:
+ 306              	.L23:
+ 307              		.loc 1 52 1 view .LVU64
+ 308              		.align	2
+ 309              	.L22:
+ 310 0038 00080140 		.word	1073809408
+ 311 003c 00000000 		.word	hspi1
+ 312              		.cfi_endproc
+ 313              	.LFE68:
+ 315              		.section	.text.change_row,"ax",%progbits
+ 316              		.align	1
+ 317              		.global	change_row
+ 318              		.syntax unified
+ 319              		.thumb
+ 320              		.thumb_func
+ 322              	change_row:
+ 323              	.LVL30:
+ 324              	.LFB69:
+  53:Core/Src/max_func.c **** 
+  54:Core/Src/max_func.c **** void change_row(uint8_t (*arr)[8], uint8_t max_number, uint8_t row, uint8_t data) {
+ 325              		.loc 1 54 83 is_stmt 1 view -0
+ 326              		.cfi_startproc
+ 327              		@ args = 0, pretend = 0, frame = 0
+ 328              		@ frame_needed = 0, uses_anonymous_args = 0
+ 329              		.loc 1 54 83 is_stmt 0 view .LVU66
+ 330 0000 70B5     		push	{r4, r5, r6, lr}
+ 331              	.LCFI5:
+ 332              		.cfi_def_cfa_offset 16
+ 333              		.cfi_offset 4, -16
+ 334              		.cfi_offset 5, -12
+ 335              		.cfi_offset 6, -8
+ARM GAS  /var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s 			page 8
+
+
+ 336              		.cfi_offset 14, -4
+ 337 0002 0546     		mov	r5, r0
+ 338 0004 1446     		mov	r4, r2
+ 339 0006 1E46     		mov	r6, r3
+  55:Core/Src/max_func.c ****   uint8_t mon_num = get_disp(max_number);
+ 340              		.loc 1 55 3 is_stmt 1 view .LVU67
+ 341              		.loc 1 55 21 is_stmt 0 view .LVU68
+ 342 0008 0846     		mov	r0, r1
+ 343              	.LVL31:
+ 344              		.loc 1 55 21 view .LVU69
+ 345 000a FFF7FEFF 		bl	get_disp
+ 346              	.LVL32:
+  56:Core/Src/max_func.c ****   arr[row - 1][mon_num] = data;
+ 347              		.loc 1 56 3 is_stmt 1 view .LVU70
+ 348              		.loc 1 56 6 is_stmt 0 view .LVU71
+ 349 000e 04F10052 		add	r2, r4, #536870912
+ 350 0012 013A     		subs	r2, r2, #1
+ 351 0014 05EBC205 		add	r5, r5, r2, lsl #3
+ 352              	.LVL33:
+ 353              		.loc 1 56 25 view .LVU72
+ 354 0018 2E54     		strb	r6, [r5, r0]
+  57:Core/Src/max_func.c **** }
+ 355              		.loc 1 57 1 view .LVU73
+ 356 001a 70BD     		pop	{r4, r5, r6, pc}
+ 357              		.loc 1 57 1 view .LVU74
+ 358              		.cfi_endproc
+ 359              	.LFE69:
+ 361              		.section	.text.change_dot,"ax",%progbits
+ 362              		.align	1
+ 363              		.global	change_dot
+ 364              		.syntax unified
+ 365              		.thumb
+ 366              		.thumb_func
+ 368              	change_dot:
+ 369              	.LVL34:
+ 370              	.LFB70:
+  58:Core/Src/max_func.c **** 
+  59:Core/Src/max_func.c **** void change_dot(uint8_t (*arr)[8], uint8_t max_number, uint8_t column, uint8_t row, uint8_t data) {
+ 371              		.loc 1 59 99 is_stmt 1 view -0
+ 372              		.cfi_startproc
+ 373              		@ args = 4, pretend = 0, frame = 0
+ 374              		@ frame_needed = 0, uses_anonymous_args = 0
+ 375              		.loc 1 59 99 is_stmt 0 view .LVU76
+ 376 0000 70B5     		push	{r4, r5, r6, lr}
+ 377              	.LCFI6:
+ 378              		.cfi_def_cfa_offset 16
+ 379              		.cfi_offset 4, -16
+ 380              		.cfi_offset 5, -12
+ 381              		.cfi_offset 6, -8
+ 382              		.cfi_offset 14, -4
+ 383 0002 0546     		mov	r5, r0
+ 384 0004 1446     		mov	r4, r2
+ 385 0006 1E46     		mov	r6, r3
+  60:Core/Src/max_func.c ****   uint8_t mon_num = get_disp(max_number);
+ 386              		.loc 1 60 3 is_stmt 1 view .LVU77
+ 387              		.loc 1 60 21 is_stmt 0 view .LVU78
+ 388 0008 0846     		mov	r0, r1
+ARM GAS  /var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s 			page 9
+
+
+ 389              	.LVL35:
+ 390              		.loc 1 60 21 view .LVU79
+ 391 000a FFF7FEFF 		bl	get_disp
+ 392              	.LVL36:
+  61:Core/Src/max_func.c ****   arr[column - 1][mon_num] &= ~(1 << (row - 1));
+ 393              		.loc 1 61 3 is_stmt 1 view .LVU80
+ 394              		.loc 1 61 6 is_stmt 0 view .LVU81
+ 395 000e 04F10052 		add	r2, r4, #536870912
+ 396 0012 013A     		subs	r2, r2, #1
+ 397 0014 05EBC204 		add	r4, r5, r2, lsl #3
+ 398              	.LVL37:
+ 399              		.loc 1 61 18 view .LVU82
+ 400 0018 215C     		ldrb	r1, [r4, r0]	@ zero_extendqisi2
+ 401              		.loc 1 61 43 view .LVU83
+ 402 001a 731E     		subs	r3, r6, #1
+ 403              		.loc 1 61 35 view .LVU84
+ 404 001c 0122     		movs	r2, #1
+ 405              	.LVL38:
+ 406              		.loc 1 61 35 view .LVU85
+ 407 001e 9A40     		lsls	r2, r2, r3
+ 408              		.loc 1 61 28 view .LVU86
+ 409 0020 D243     		mvns	r2, r2
+ 410 0022 52B2     		sxtb	r2, r2
+ 411 0024 0A40     		ands	r2, r2, r1
+ 412 0026 2254     		strb	r2, [r4, r0]
+  62:Core/Src/max_func.c ****   arr[column - 1][mon_num] |= (data << (row - 1));
+ 413              		.loc 1 62 3 is_stmt 1 view .LVU87
+ 414              		.loc 1 62 37 is_stmt 0 view .LVU88
+ 415 0028 9DF81010 		ldrb	r1, [sp, #16]	@ zero_extendqisi2
+ 416 002c 01FA03F3 		lsl	r3, r1, r3
+ 417              		.loc 1 62 28 view .LVU89
+ 418 0030 1A43     		orrs	r2, r2, r3
+ 419 0032 2254     		strb	r2, [r4, r0]
+  63:Core/Src/max_func.c **** }
+ 420              		.loc 1 63 1 view .LVU90
+ 421 0034 70BD     		pop	{r4, r5, r6, pc}
+ 422              		.loc 1 63 1 view .LVU91
+ 423              		.cfi_endproc
+ 424              	.LFE70:
+ 426              		.section	.text.change_column,"ax",%progbits
+ 427              		.align	1
+ 428              		.global	change_column
+ 429              		.syntax unified
+ 430              		.thumb
+ 431              		.thumb_func
+ 433              	change_column:
+ 434              	.LVL39:
+ 435              	.LFB71:
+  64:Core/Src/max_func.c **** 
+  65:Core/Src/max_func.c **** void change_column(uint8_t (*arr)[8], uint8_t max_number, uint8_t column, uint8_t data) {
+ 436              		.loc 1 65 89 is_stmt 1 view -0
+ 437              		.cfi_startproc
+ 438              		@ args = 0, pretend = 0, frame = 0
+ 439              		@ frame_needed = 0, uses_anonymous_args = 0
+ 440              		.loc 1 65 89 is_stmt 0 view .LVU93
+ 441 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 442              	.LCFI7:
+ARM GAS  /var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s 			page 10
+
+
+ 443              		.cfi_def_cfa_offset 24
+ 444              		.cfi_offset 4, -24
+ 445              		.cfi_offset 5, -20
+ 446              		.cfi_offset 6, -16
+ 447              		.cfi_offset 7, -12
+ 448              		.cfi_offset 8, -8
+ 449              		.cfi_offset 14, -4
+ 450 0004 82B0     		sub	sp, sp, #8
+ 451              	.LCFI8:
+ 452              		.cfi_def_cfa_offset 32
+ 453 0006 8046     		mov	r8, r0
+ 454 0008 0D46     		mov	r5, r1
+ 455 000a 1746     		mov	r7, r2
+  66:Core/Src/max_func.c ****   data = reverse_byte_mask(data);
+ 456              		.loc 1 66 3 is_stmt 1 view .LVU94
+ 457              		.loc 1 66 10 is_stmt 0 view .LVU95
+ 458 000c 1846     		mov	r0, r3
+ 459              	.LVL40:
+ 460              		.loc 1 66 10 view .LVU96
+ 461 000e FFF7FEFF 		bl	reverse_byte_mask
+ 462              	.LVL41:
+ 463              		.loc 1 66 10 view .LVU97
+ 464 0012 0646     		mov	r6, r0
+ 465              	.LVL42:
+  67:Core/Src/max_func.c ****   uint8_t mon_num = get_disp(max_number);
+ 466              		.loc 1 67 3 is_stmt 1 view .LVU98
+ 467              		.loc 1 67 21 is_stmt 0 view .LVU99
+ 468 0014 2846     		mov	r0, r5
+ 469 0016 FFF7FEFF 		bl	get_disp
+ 470              	.LVL43:
+  68:Core/Src/max_func.c ****   for (uint8_t i = 0; i < 8; i++) {
+ 471              		.loc 1 68 3 is_stmt 1 view .LVU100
+ 472              	.LBB7:
+ 473              		.loc 1 68 8 view .LVU101
+ 474              		.loc 1 68 16 is_stmt 0 view .LVU102
+ 475 001a 4FF0000C 		mov	ip, #0
+ 476              		.loc 1 68 3 view .LVU103
+ 477 001e 0EE0     		b	.L29
+ 478              	.LVL44:
+ 479              	.L30:
+  69:Core/Src/max_func.c ****     change_dot(arr, max_number, i + 1, column, ((data >> i) & 1));
+ 480              		.loc 1 69 5 is_stmt 1 view .LVU104
+ 481 0020 0CF10104 		add	r4, ip, #1
+ 482 0024 E4B2     		uxtb	r4, r4
+ 483              		.loc 1 69 55 is_stmt 0 view .LVU105
+ 484 0026 46FA0CFC 		asr	ip, r6, ip
+ 485              	.LVL45:
+ 486              		.loc 1 69 5 view .LVU106
+ 487 002a 0CF00103 		and	r3, ip, #1
+ 488 002e 0093     		str	r3, [sp]
+ 489 0030 3B46     		mov	r3, r7
+ 490 0032 2246     		mov	r2, r4
+ 491 0034 2946     		mov	r1, r5
+ 492 0036 4046     		mov	r0, r8
+ 493 0038 FFF7FEFF 		bl	change_dot
+ 494              	.LVL46:
+  68:Core/Src/max_func.c ****   for (uint8_t i = 0; i < 8; i++) {
+ARM GAS  /var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s 			page 11
+
+
+ 495              		.loc 1 68 31 is_stmt 1 discriminator 3 view .LVU107
+  68:Core/Src/max_func.c ****   for (uint8_t i = 0; i < 8; i++) {
+ 496              		.loc 1 68 31 is_stmt 0 discriminator 3 view .LVU108
+ 497 003c A446     		mov	ip, r4
+ 498              	.LVL47:
+ 499              	.L29:
+  68:Core/Src/max_func.c ****   for (uint8_t i = 0; i < 8; i++) {
+ 500              		.loc 1 68 25 is_stmt 1 discriminator 1 view .LVU109
+ 501 003e BCF1070F 		cmp	ip, #7
+ 502 0042 EDD9     		bls	.L30
+ 503              	.LBE7:
+  70:Core/Src/max_func.c ****   }
+  71:Core/Src/max_func.c **** }
+ 504              		.loc 1 71 1 is_stmt 0 view .LVU110
+ 505 0044 02B0     		add	sp, sp, #8
+ 506              	.LCFI9:
+ 507              		.cfi_def_cfa_offset 24
+ 508              		@ sp needed
+ 509 0046 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 510              		.loc 1 71 1 view .LVU111
+ 511              		.cfi_endproc
+ 512              	.LFE71:
+ 514              		.global	hspi1
+ 515              		.section	.bss.hspi1,"aw",%nobits
+ 516              		.align	2
+ 519              	hspi1:
+ 520 0000 00000000 		.space	88
+ 520      00000000 
+ 520      00000000 
+ 520      00000000 
+ 520      00000000 
+ 521              		.text
+ 522              	.Letext0:
+ 523              		.file 2 "/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.external
+ 524              		.file 3 "/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.external
+ 525              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 526              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 527              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ 528              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 529              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h"
+ 530              		.file 9 "Core/Src/../Inc/aux_func.h"
+ 531              		.file 10 "Core/Src/../Inc/max_func.h"
+ARM GAS  /var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 max_func.c
+/var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s:19     .text.send_all_data:00000000 $t
+/var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s:25     .text.send_all_data:00000000 send_all_data
+/var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s:107    .text.send_all_data:0000004c $d
+/var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s:519    .bss.hspi1:00000000 hspi1
+/var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s:113    .text.max_init:00000000 $t
+/var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s:119    .text.max_init:00000000 max_init
+/var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s:161    .text.create_array:00000000 $t
+/var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s:167    .text.create_array:00000000 create_array
+/var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s:240    .text.refresh_max:00000000 $t
+/var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s:246    .text.refresh_max:00000000 refresh_max
+/var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s:310    .text.refresh_max:00000038 $d
+/var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s:316    .text.change_row:00000000 $t
+/var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s:322    .text.change_row:00000000 change_row
+/var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s:362    .text.change_dot:00000000 $t
+/var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s:368    .text.change_dot:00000000 change_dot
+/var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s:427    .text.change_column:00000000 $t
+/var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s:433    .text.change_column:00000000 change_column
+/var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//ccr4qlsr.s:516    .bss.hspi1:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_GPIO_WritePin
+HAL_SPI_Transmit
+get_disp
+reverse_byte_mask

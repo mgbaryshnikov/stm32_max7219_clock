@@ -1,0 +1,40 @@
+ARM GAS  /var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//cc2UKW8b.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"bits_flag.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "Core/Src/bits_flag.c"
+  18              		.global	eye
+  19              		.section	.rodata.eye,"a"
+  20              		.align	2
+  23              	eye:
+  24 0000 3C7EC399 		.ascii	"<~\303\231\303~<\000"
+  24      C37E3C00 
+  25              		.text
+  26              	.Letext0:
+  27              		.file 2 "/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.external
+  28              		.file 3 "/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.external
+  29              		.file 4 "Core/Src/../Inc/bits_flag.h"
+ARM GAS  /var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//cc2UKW8b.s 			page 2
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 bits_flag.c
+/var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//cc2UKW8b.s:23     .rodata.eye:00000000 eye
+/var/folders/yz/d9r1ptpx3b38fsndtcpp09lr0000gn/T//cc2UKW8b.s:20     .rodata.eye:00000000 $d
+
+NO UNDEFINED SYMBOLS
