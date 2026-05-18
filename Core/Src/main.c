@@ -100,7 +100,6 @@ int main(void)
 
   uint8_t arr[8][8];
   uint8_t rx[5];
-  uint8_t last[4];
 
   create_array(arr);
   refresh_max(arr);
@@ -114,26 +113,12 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
     HAL_UART_Receive(&huart1, rx, 5, HAL_MAX_DELAY);
-    if (rx[0] != last[0]) {
-      get_rx(arr, 4, rx[0]);
-      last[0] = rx[0];
-    }
-    if (rx[1] != last[1]) {
-      get_rx(arr, 3, rx[1]);
-      last[1] = rx[1];
-      change_dot(arr, 3, 8, 2, 1);
-      change_dot(arr, 3, 8, 7, 1);
-    }
-    if (rx[3] != last[2]) {
-      get_rx(arr, 2, rx[3]);
-      last[2] = rx[3];
-      
-    }
-    if (rx[4] != last[3]) {
-      get_rx(arr, 1, rx[4]);
-      last[3] = rx[4];
-    }
-
+    get_rx(arr, 4, rx[0]);
+    get_rx(arr, 3, rx[1]);
+    change_dot(arr, 3, 2, 8, 1);
+    change_dot(arr, 3, 7, 8, 1);
+    get_rx(arr, 2, rx[3]);
+    get_rx(arr, 1, rx[4]);
     
     refresh_max(arr);
     // HAL_Delay(2000);
