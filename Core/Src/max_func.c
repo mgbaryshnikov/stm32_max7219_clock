@@ -2,9 +2,11 @@
 #include "../Inc/aux_func.h"
 #include "main.h"
 #include "stm32f103xb.h"
+#include "../Inc/bits_flag.h"
 
 
 SPI_HandleTypeDef hspi1;
+
 
 void send_all_data(uint8_t reg, uint8_t data) 
 {
@@ -48,6 +50,7 @@ void refresh_max(uint8_t (*arr)[8]) {
     HAL_SPI_Transmit(&hspi1, arr[i], 8, HAL_MAX_DELAY);
 
     HAL_GPIO_WritePin(CS_GPIO_Port, CS_Pin, GPIO_PIN_SET);
+    
   }
 }
 
@@ -72,11 +75,44 @@ void change_column(uint8_t (*arr)[8], uint8_t max_number, uint8_t column, uint8_
 
 void draw_disp(uint8_t (*arr)[8], uint8_t max_number, uint8_t *data) {
   for (int i = 0; i < 8; i++) {
-    if (max_number < 3) {
-      change_row(arr, max_number, i + 1, data[i] << 2);
+    if (max_number == 3) {
+      change_row(arr, max_number, i + 1, data[i] >> 1);
     }
     else {
       change_row(arr, max_number, i + 1, data[i]);
     }
+  }
+}
+
+void get_rx (uint8_t (*arr)[8], uint8_t max_number, char digit) {
+  if (digit == '0') {
+    draw_disp(arr, max_number, zero);
+  }
+  else if (digit == '1') {
+    draw_disp(arr, max_number, one);
+  }
+  else if (digit == '2') {
+    draw_disp(arr, max_number, two);
+  }
+  else if (digit == '3') {
+    draw_disp(arr, max_number, three);
+  }
+  else if (digit == '4') {
+    draw_disp(arr, max_number, four);
+  }
+  else if (digit == '5') {
+    draw_disp(arr, max_number, five);
+  }
+  else if (digit == '6') {
+    draw_disp(arr, max_number, six);
+  }
+  else if (digit == '7') {
+    draw_disp(arr, max_number, seven);
+  }
+  else if (digit == '8') {
+    draw_disp(arr, max_number, eight);
+  }
+  else if (digit == '9') {
+    draw_disp(arr, max_number, nine);
   }
 }
