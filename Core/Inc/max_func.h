@@ -22,4 +22,6 @@ void change_column(uint8_t (*arr)[8], uint8_t max_number, uint8_t column, uint8_
 
 void draw_disp(uint8_t (*arr)[8], uint8_t max_number, uint8_t *data);
 
+void get_rx (uint8_t (*arr)[8], uint8_t max_number, char digit);
+
 #endif
